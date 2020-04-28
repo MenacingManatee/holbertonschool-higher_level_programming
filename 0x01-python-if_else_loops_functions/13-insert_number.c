@@ -26,7 +26,7 @@ listint_t *insert_node(listint_t **head, int number)
 		return (*head);
 	}
 	runner = runner->next;
-	for (; runner->n < number && runner; runner = runner->next)
+	for (; runner && runner->n < number; runner = runner->next)
 		curr = curr->next;
 	new->next = runner;
 	curr->next = new;
