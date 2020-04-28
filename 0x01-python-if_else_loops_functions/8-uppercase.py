@@ -8,8 +8,9 @@ def islower(a):
 
 
 def uppercase(s1):
-    s1 = list(s1)
-    for i in range(len(s1)):
-        check = islower(s1[i])
-        s1[i] = chr(check)
-    print("".join(s1))
+    s2 = list(s1)
+    for i in range(len(s2)):
+        check = islower(s2[i])
+        s2[i] = chr(check)
+        print("{:s}".format(s2[i]), end="")
+    print("")
