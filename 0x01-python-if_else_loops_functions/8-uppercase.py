@@ -5,6 +5,8 @@ def islower(a):
         return(a - (ord("a") - ord("A")))
     else:
         return(a)
+
+
 def uppercase(s1):
     s1 = list(s1)
     for i in range(len(s1)):
