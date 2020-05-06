@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * print_python_list_info - prints some basic info about python lists
@@ -9,13 +10,17 @@
  */
 void print_python_list_info(PyObject *p)
 {
-	int sz;
+	int sz, i;
 
 	if (!PyList_Check(p))
-	{
-		printf("Not a list\n");
 		return;
-	}
 	sz = PyList_Size(p);
 	printf("[*] Size of the Python List = %d\n", sz);
+	printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
+	for (i = 0; i < sz; i++)
+	{
+		printf("Element %d: %s\n", i,
+		       Py_TYPE(PyList_GetItem(p, i))->tp_name);
+		Py_INCREF(p);
+	}
 }
