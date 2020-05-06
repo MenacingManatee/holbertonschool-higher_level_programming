@@ -1,4 +1,5 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
-int _putchar(char c);
+#include <Python.h>
+void print_python_list_info(PyObject *p);
 #endif
