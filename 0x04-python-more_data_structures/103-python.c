@@ -11,6 +11,7 @@
 void print_python_list(PyObject *p)
 {
 	int sz, i;
+	PyTypeObject *type;
 
 	if (!PyList_Check(p))
 		return;
@@ -20,8 +21,9 @@ void print_python_list(PyObject *p)
 	printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
 	for (i = 0; i < sz; i++)
 	{
-		printf("Element %d: %s\n", i,
-		       Py_TYPE(PyList_GetItem(p, i))->tp_name);/*Need to rm*/
+		type = (PyTypeObject *)PyObject_Type(PyList_GET_ITEM(p, i));
+		printf("Element %d: %s\n", i, type->tp_name);
+/*Need to rm*/
 		Py_INCREF(p);
 	}
 }
