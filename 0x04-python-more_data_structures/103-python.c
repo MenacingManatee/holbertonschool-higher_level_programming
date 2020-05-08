@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <Python.h>
 
+int _strcmp(const char *s1, char *s2);
+void print_python_bytes(PyObject *p);
 /**
  * print_python_list_info - prints some basic info about python lists
  * @p: PyObject to print info from
@@ -23,7 +25,8 @@ void print_python_list(PyObject *p)
 	{
 		type = (PyTypeObject *)PyObject_Type(PyList_GET_ITEM(p, i));
 		printf("Element %d: %s\n", i, type->tp_name);
-/*Need to rm*/
+		if (!_strcmp(type->tp_name, "bytes"))
+			print_python_bytes(PyList_GET_ITEM(p, i));
 		Py_INCREF(p);
 	}
 }
@@ -51,11 +54,30 @@ void print_python_bytes(PyObject *p)
 	printf("  size: %d\n", (int)sz);
 	printf("  trying string: %s\n", s);
 	max = (int)sz + 1 > 10 ? 10 : (int)sz + 1;
-	printf("first %d bytes: ", max);
+	printf("  first %d bytes: ", max);
 	for (i = 0; i < max; i++)
 	{
 		printf("%02x ", s[i] & 0xFF);
 	}
 	putchar('\n');
 	return;
+}
+
+/**
+ * _strcmp - compares two strings
+ *@s1: string 1 to be compared
+ *@s2: string 2 to be compared
+ * Return: a positive, negative, or 0 number based on the first different char
+ */
+int _strcmp(const char *s1, char *s2)
+{
+	while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+		return (0);
+	else
+		return (*s1 - *s2);
 }
