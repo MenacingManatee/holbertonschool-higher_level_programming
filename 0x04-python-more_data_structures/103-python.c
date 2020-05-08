@@ -53,10 +53,10 @@ void print_python_bytes(PyObject *p)
 	printf("  size: %d\n", (int)sz);
 	printf("  trying string: %s\n", s);
 	max = (int)sz + 1 > 10 ? 10 : (int)sz + 1;
-	printf("  first %d bytes: ", max);
+	printf("  first %d bytes:", max);
 	for (i = 0; i < max; i++)
 	{
-		printf("%02hhx ", s[i] & 0xFF);
+		printf(" %02hhx", s[i] & 0xFF);
 	}
 	putchar('\n');
 	return;
