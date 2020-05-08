@@ -12,22 +12,21 @@ void print_python_bytes(PyObject *p);
  */
 void print_python_list(PyObject *p)
 {
-	int sz, i;
-	PyTypeObject *type;
+	long int sz, i;
+	PyObject *type;
 
 	if (!PyList_Check(p))
 		return;
 	sz = PyList_Size(p);
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %d\n", sz);
+	printf("[*] Size of the Python List = %ld\n", sz);
 	printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
 	for (i = 0; i < sz; i++)
 	{
-		type = (PyTypeObject *)PyObject_Type(PyList_GET_ITEM(p, i));
-		printf("Element %d: %s\n", i, type->tp_name);
-		if (!_strcmp(type->tp_name, "bytes"))
+		type = PyList_GET_ITEM(p, i);
+		printf("Element %ld: %s\n", i, type->ob_type->tp_name);
+		if (!_strcmp(type->ob_type->tp_name, "bytes"))
 			print_python_bytes(PyList_GET_ITEM(p, i));
-		Py_INCREF(p);
 	}
 }
 
@@ -57,7 +56,7 @@ void print_python_bytes(PyObject *p)
 	printf("  first %d bytes: ", max);
 	for (i = 0; i < max; i++)
 	{
-		printf("%02x ", s[i] & 0xFF);
+		printf("%02hhx ", s[i] & 0xFF);
 	}
 	putchar('\n');
 	return;
