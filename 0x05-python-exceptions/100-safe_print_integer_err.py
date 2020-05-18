@@ -5,9 +5,9 @@ def safe_print_integer_err(value):
         print("{:d}".format(value))
         res = True
     except TypeError as e:
-        print(e, file=sys.stderr)
+        print("Exception: {}".format(e), file=sys.stderr)
         res = False
     except ValueError as e:
-        print(e, file=sys.stderr)
+        print("Exception: {}".format(e), file=sys.stderr)
         res = False
     return (res)
