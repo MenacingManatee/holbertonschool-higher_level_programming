@@ -9,5 +9,8 @@ def safe_function(fct, *args):
     except IndexError as e:
         print("Exception: {}".format(e), file=sys.stderr)
         a = None
+    except TypeError as e:
+        print("Exception: {}".format(e), file=sys.stderr)
+        a = None
     finally:
         return (a)
