@@ -42,7 +42,7 @@ area, and position, with the ability to print the square visually'''
     def position(self, value):
         '''Setter for position'''
         if (isinstance(value, tuple) and len(value) is 2 and
-                len([i for i in value if i >= 0 and type(i) is int]) is 2):
+                len([i for i in value if type(i) is int and i >= 0]) is 2):
             self.__position = value
         else:
             raise TypeError('position must be a tuple of 2 positive integers')
