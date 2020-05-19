@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 '''Square class'''
+
+
 class Square:
     '''Defines a class square with area, size, position, and the ability
 to visually print. Returns a string of the visual square'''
