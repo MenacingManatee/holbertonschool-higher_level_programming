@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 class Square:
     __size = 0
+
     def area(self):
         return (self.__size ** 2)
 
