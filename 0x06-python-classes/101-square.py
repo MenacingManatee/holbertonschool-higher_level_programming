@@ -62,6 +62,9 @@ to visually print. Returns a string of the visual square'''
     def strsqr(self):
         '''Returns a string representation of the square'''
         res = []
+        if (self.__size is 0):
+            res.append('\n')
+            return ("".join(res))
         for i in range(self.__position[1]):
             res.append('\n')
         for i in range(self.__size):
