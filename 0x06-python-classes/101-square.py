@@ -68,9 +68,8 @@ to visually print. Returns a string of the visual square'''
             if (self.__position[0] > 0):
                 res.append(' ' * self.__position[0])
             res.append('#' * self.__size)
-            res.append('\n')
-        if (self.__size == 0):
-            res.append('\n')
+            if (i != self.__size - 1):
+                res.append('\n')
         return ("".join(res))
 
     def __repr__(self):
