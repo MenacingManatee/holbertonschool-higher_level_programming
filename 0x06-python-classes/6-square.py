@@ -42,19 +42,19 @@ area, and position, with the ability to print the square visually'''
     def position(self, value):
         '''Setter for position'''
         if (isinstance(value, tuple) and len(value) is 2 and
-                len([i for i in value if type(value) is tuple and i >= 0]) is
-                2):
+                len([i for i in value if i >= 0]) is 2):
             self.__position = value
         else:
             raise TypeError('position must be a tuple of 2 positive integers')
 
     def my_print(self):
         '''Prints a square visually at position provided'''
+        if (self.__size is 0):
+            print("")
+            return
         for i in range(self.__position[1]):
             print("")
         for i in range(self.__size):
             if (self.position[0] > 0):
                 print(' ' * self.position[0], end="")
             print("#" * self.__size)
-        if (self.__size == 0):
-            print("")
