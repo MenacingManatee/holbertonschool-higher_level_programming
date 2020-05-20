@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''2 classes used to create a singly linked list'''
 
+
 class Node:
     '''contains data and a pointer to the next node'''
     def __init__(self, data, next_node=None):
@@ -31,6 +32,7 @@ class Node:
         if (value is not None and not isinstance(value, Node)):
             raise TypeError('next_node must be a Node object')
         self.__next_node = value
+
 
 class SinglyLinkedList:
     '''Contains a chain of linked nodes'''
