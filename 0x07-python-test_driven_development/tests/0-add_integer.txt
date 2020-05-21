@@ -1,19 +1,27 @@
-	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_i = __import__('0-add_integer')
 
-	>>> print(add_integer(5, 6))
+	>>> print(add_i.add_integer(5, 6))
 	11
 
+	>>> if add_i.__doc__ is not None:
+	...    print(1)
+	1
+
+	>>> if add_i.add_integer.__doc__ is not None:
+	...    print(1)
+	1
+
 	>>> try:
-	...     print(add_integer("holb", 2.2))
+	...     print(add_i.add_integer("holb", 2.2))
 	... except Exception as e:
 	... 	print(e)
 	a must be an integer
 
 	>>> try:
-	...     print(add_integer("holb", 2.2))
+	...     print(add_i.add_integer("holb", 2.2))
 	... except Exception as e:
 	... 	print(e)
 	a must be an integer
 
-	>>> print(add_integer(1.1, 1))
+	>>> print(add_i.add_integer(1.1, 1))
 	2
