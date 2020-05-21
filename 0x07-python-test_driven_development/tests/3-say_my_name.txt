@@ -11,6 +11,15 @@
 >>> say_n.say_my_name("Brett", "Davis")
 My name is Brett Davis
 
+>>> say_n.say_my_name("John", "Smith")
+My name is John Smith
+
+>>> say_n.say_my_name("Walter", "White")
+My name is Walter White
+
+>>> say_n.say_my_name("Jooooohn", "Ceenaaaaaaa")
+My name is Jooooohn Ceenaaaaaaa
+
 >>> try:
 ...	say_n.say_my_name(1, "Smith")
 ... except Exception as e:
