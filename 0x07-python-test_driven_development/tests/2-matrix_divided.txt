@@ -1,0 +1,57 @@
+>>> mat_div = __import__('matrix_divided')
+
+>>> if mat_div.__doc__ is not None:
+...    print(1)
+1
+
+>>> if mat_div.matrix_divided.__doc__ is not None:
+...    print(1)
+1
+
+>>> matrix = [
+... 	   [3, 6, 9],
+... 	   [1, 2, 3]
+... 	   ]
+
+>>> backup = matrix.copy()
+
+>>> matrix_2 = matrix.copy()
+
+>>> matrix_2.append([1])
+
+>>> badMatrix = [
+... 	   ['a', 'b', 'c'],
+... 	   ["test", 7, [1, 2]],
+... 	   [(1, 3), 9, 1.1]
+... 	   ]
+
+>>> print(mat_div.matrix_divided(matrix, 3))
+[[1, 2, 3], [0.33, 0.67, 1.0]]
+
+>>> if backup == matrix:
+...     print(1)
+1
+
+>>> try:
+...	print(mat_div.matrix_divided(badMatrix, 2))
+... except Exception as e:
+... 	print(e)
+matrix must be a matrix (list of lists) of integers/floats
+
+>>> try:
+...	print(mat_div.matrix_divided(matrix, 0))
+... except Exception as e:
+... 	print(e)
+division by zero
+
+>>> try:
+...	print(mat_div.matrix_divided(matrix_2, 2))
+... except Exception as e:
+... 	print(e)
+Each row of the matrix must have the same size
+
+>>> try:
+...	print(mat_div.matrix_divided(matrix, 'n'))
+... except Exception as e:
+... 	print(e)
+div must be a number
