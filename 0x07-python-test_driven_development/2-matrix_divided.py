@@ -22,6 +22,8 @@ integers/floats')
                     raise TypeError('matrix must be a matrix (list of lists) \
 of integers/floats')
         return(matrix_div_drive(matrix, div))
+    raise TypeError('matrix must be a matrix (list of lists) of \
+integers/floats')
 
 def matrix_div_drive(matrix, div):
     '''Driver function for matrix_divided'''
