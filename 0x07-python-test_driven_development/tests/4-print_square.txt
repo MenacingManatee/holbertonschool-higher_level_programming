@@ -1,4 +1,4 @@
-p = __import__('4-print_square')
+>>> p = __import__('4-print_square')
 
 >>> if p.__doc__ is not None:
 ...    print(1)
@@ -9,7 +9,7 @@ p = __import__('4-print_square')
 1
 
 >>> p.print_square(0)
-\n
+<BLANKLINE>
 
 >>> p.print_square(1)
 #
