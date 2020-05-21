@@ -1,0 +1,42 @@
+>>> say_n = __import__('3-say_my_name')
+
+>>> if say_n.__doc__ is not None:
+...    print(1)
+1
+
+>>> if say_n.say_my_name.__doc__ is not None:
+...    print(1)
+1
+
+>>> say_n.say_my_name("Brett", "Davis")
+My name is Brett Davis
+
+>>> try:
+...	say_n.say_my_name(1, "Smith")
+... except Exception as e:
+... 	print(e)
+first_name must be a string
+
+>>> try:
+...	say_n.say_my_name("John", 316)
+... except Exception as e:
+... 	print(e)
+last_name must be a string
+
+>>> try:
+...	say_n.say_my_name("Billy")
+... except Exception as e:
+... 	print(e)
+My name is Billy 
+
+>>> try:
+...	say_n.say_my_name("Joe", None)
+... except Exception as e:
+...     print(e)
+last_name must be a string
+
+>>> try:
+...	say_n.say_my_name(None, None)
+... except Exception as e:
+... 	print(e)
+first_name must be a string
