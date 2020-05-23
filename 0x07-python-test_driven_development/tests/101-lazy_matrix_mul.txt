@@ -1,0 +1,82 @@
+>>> matrix_mul = __import__('101-lazy_matrix_mul').matrix_mul
+
+#######################
+# Documentation tests #
+#######################
+
+>>> if __import__('100-matrix_mul').__doc__ is not None:
+...    print(1)
+1
+
+>>> if matrix_mul.__doc__ is not None:
+...    print(1)
+1
+
+#######################
+# Functionality tests #
+#######################
+
+>>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[ 7 10]
+ [15 22]]
+
+>>> print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13 16]]
+
+###################
+# Edge Case tests #
+###################
+
+>>> try:
+...	matrix_mul("string", [1])
+... except Exception as e:
+... 	print(e)
+m_a must be a numpy array
+
+>>> try:
+...	matrix_mul([1, 2, 3], [[1, 2, 4]])
+... except Exception as e:
+...     print(e)
+m_a must be a numpy array of arrays
+
+>>> try:
+...	matrix_mul([[1, 2], [3, 4]], [5, 6])
+... except Exception as e:
+... 	print(e)
+m_b must be a numpy array of arrays
+
+>>> try:
+...	matrix_mul([], None)
+... except Exception as e:
+... 	print(e)
+m_b must be a numpy array
+
+>>> try:
+...	matrix_mul([[]], [[1, 2]])
+... except Exception as e:
+... 	print(e)
+m_a can't be empty
+
+>>> try:
+...	matrix_mul([[1, 2], [3, 4]], [[5, 6], []])
+... except Exception as e:
+... 	print(e)
+m_b can't be empty
+
+>>> try:
+...	matrix_mul([[1, 2], [3, "str"]], [[5, 6], [7, 'c']])
+... except Exception as e:
+...	print(e)
+m_a should contain only integers or floats
+
+>>> try:
+...	matrix_mul([[1, 3], [4, 5]], [[1], [1, 3]])
+... except Exception as e:
+... 	print(e)
+each row of m_b must be of the same size
+
+>>> try:
+...	matrix_mul([[1, 2, 3], [4, 5, 6]], [[1]])
+... except Exception as e:
+... 	print(e)
+m_a and m_b can't be multiplied
