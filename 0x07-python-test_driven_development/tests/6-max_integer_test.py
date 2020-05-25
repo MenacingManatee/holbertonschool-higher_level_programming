@@ -61,5 +61,9 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([0.1, 0.00001, 0.00000000001, 0.0000002]),
                          0.1)
 
+    def test_one_elem(self):
+        '''A test using a list of one element'''
+        self.assertEqual(max_integer([1]), 1)
+
 if __name__ == '__main__':
     unittest.main()
