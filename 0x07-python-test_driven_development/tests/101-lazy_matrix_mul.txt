@@ -1,4 +1,4 @@
->>> matrix_mul = __import__('101-lazy_matrix_mul').matrix_mul
+>>> matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
 #######################
 # Documentation tests #

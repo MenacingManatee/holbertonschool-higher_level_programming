@@ -3,7 +3,7 @@
 import numpy as np
 
 
-def matrix_mul(m_a, m_b):
+def lazy_matrix_mul(m_a, m_b):
     '''Usage: matrix_mul(m_a, m_b)'''
     if not isinstance(m_a, (list, np.ndarray)):
         raise TypeError('m_a must be a numpy array')
