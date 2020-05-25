@@ -10,12 +10,12 @@ def lazy_matrix_mul(m_a, m_b):
     elif not isinstance(m_b, (list, np.ndarray)):
         raise TypeError('m_b must be a numpy array')
     elif (len([i for i in range(len(m_a)) if isinstance(m_a[i],
-                                                        (list, np.ndarray))]) !=
-          len(m_a)):
+                                                        (list, np.ndarray))]
+              ) != len(m_a)):
         raise TypeError('m_a must be a numpy array of arrays')
     elif (len([i for i in range(len(m_b)) if isinstance(m_b[i],
-                                                        (list, np.ndarray))]) !=
-          len(m_b)):
+                                                        (list, np.ndarray))]
+              ) != len(m_b)):
         raise TypeError('m_b must be a numpy array of arrays')
     elif (len([i for i in range(len(m_a)) if m_a[i]]) != len(m_a)):
         raise ValueError('m_a can\'t be empty')
@@ -29,16 +29,17 @@ def lazy_matrix_mul(m_a, m_b):
                                                  for j in m_b[i])]
               ) != len(m_b)):
         raise TypeError('m_b should contain only integers or floats')
-    elif (len([i for i in range(len(m_a)) if len(m_a[i]) == len(m_a[0])])
-          != len(m_a)):
+    elif (len([i for i in range(len(m_a)) if len(m_a[i]) == len(m_a[0])]) !=
+          len(m_a)):
         raise TypeError('each row of m_a must be of the same size')
-    elif (len([i for i in range(len(m_b)) if len(m_b[i]) == len(m_b[0])])
-          != len(m_b)):
+    elif (len([i for i in range(len(m_b)) if len(m_b[i]) == len(m_b[0])]) !=
+          len(m_b)):
         raise TypeError('each row of m_b must be of the same size')
     elif (len(m_a[0]) != len(m_b)):
         raise ValueError('m_a and m_b can\'t be multiplied')
     else:
         return (matrix_multiplier(m_a, m_b))
+
 
 def matrix_multiplier(m_a, m_b):
     '''Driver function for matrix_mul'''
