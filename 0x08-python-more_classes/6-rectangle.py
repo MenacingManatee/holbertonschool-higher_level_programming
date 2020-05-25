@@ -5,6 +5,7 @@
 class Rectangle:
     '''Defines a rectangle based on width and height'''
     number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         '''Initialization for class'''
         self.width = width
@@ -67,7 +68,7 @@ class Rectangle:
     def __repr__(self):
         '''Returns a string telling eval to make a new rectangle'''
         return ("Rectangle(" + str(self.__width) + ', ' + str(self.__height) +
-            ')')
+                ')')
 
     def __del__(self):
         '''Alerts user when a rectangle is deleted'''

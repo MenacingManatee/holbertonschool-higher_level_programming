@@ -65,7 +65,7 @@ class Rectangle:
     def __repr__(self):
         '''Returns a string telling eval to make a new rectangle'''
         return ("Rectangle(" + str(self.__width) + ', ' + str(self.__height) +
-            ')')
+                ')')
 
     def __del__(self):
         '''Alerts user when a rectangle is deleted'''
