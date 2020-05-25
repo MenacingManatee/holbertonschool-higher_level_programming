@@ -52,6 +52,8 @@ class Rectangle:
     def str_rep(self):
         '''Creates a string representation to be printed by other functions'''
         res = []
+        if self.__height is 0 or self.__width is 0:
+            return ('\n')
         for i in range(self.__height):
             res.append('#' * self.__width)
             if i != self.__height - 1:
