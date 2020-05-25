@@ -14,6 +14,6 @@ def print_square(size):
     elif size < 0:
         raise TypeError('size must be >= 0')
     elif size is 0:
-        print("")
+        print("", end="")
     else:
         print("".join(['#' * size + '\n' for i in range(size)]), end="")
