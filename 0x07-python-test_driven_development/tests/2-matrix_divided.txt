@@ -28,8 +28,8 @@
 >>> print(mat_div.matrix_divided(matrix, 3))
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
->>> print(mat_div.matrix_divided(matrix, 3.0))
-[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+>>> print(mat_div.matrix_divided(matrix, float("inf")))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
 >>> if backup == matrix:
 ...     print(1)
