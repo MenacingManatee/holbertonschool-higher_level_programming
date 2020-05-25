@@ -39,7 +39,7 @@ def matrix_mul(m_a, m_b):
 
 def matrix_multiplier(m_a, m_b):
     '''Driver function for matrix_mul'''
-    res = [ [0 for i in range(len(m_a[0]))] for j in range(len(m_a)) ]
+    res = [ [0 for i in range(len(m_a))] for j in range(len(m_a)) ]
     for i in range(len(m_a)):
         for j in range(len(m_b[0])):
             for k in range(len(m_b)):
