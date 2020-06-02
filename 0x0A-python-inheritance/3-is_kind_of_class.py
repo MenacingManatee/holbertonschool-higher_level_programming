@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-'''Finds f the object is an instance of, 
-or if the object is an instance of a class that inherited from, 
+'''Finds f the object is an instance of,
+or if the object is an instance of a class that inherited from,
 the specified class
 '''
 

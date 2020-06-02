@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Finds f the object is an instance of a class that inherited 
+'''Finds f the object is an instance of a class that inherited
 (directly or indirectly) from the specified class
 '''
 
