@@ -17,5 +17,4 @@ class Student:
     def to_json(self):
         '''retrieves a dictionary representation of a Student instance '''
         import json
-        d = json.dumps(self.__dict__)
-        return json.loads(d)
+        return self.__dict__
