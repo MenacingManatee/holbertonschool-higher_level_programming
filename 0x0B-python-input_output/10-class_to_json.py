@@ -7,5 +7,4 @@
 
 def class_to_json(obj):
     '''Usage: class_to_json(obj)'''
-    import json
-    return json.dumps(obj.__dict__)
+    return obj.__dict__
