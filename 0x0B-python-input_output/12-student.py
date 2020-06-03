@@ -13,7 +13,6 @@ class Student:
         self.last_name = last_name
         self.first_name = first_name
 
-
     def to_json(self, attrs=None):
         '''retrieves a dictionary representation of a Student instance '''
         if type(attrs) == list:
