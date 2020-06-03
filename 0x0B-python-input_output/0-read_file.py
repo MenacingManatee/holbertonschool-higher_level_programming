@@ -5,5 +5,5 @@
 def read_file(filename=""):
     '''usage: read_file(filename="")'''
     with open(filename) as f:
-        print(f.read())
+        print(f.read(), end="")
     f.close()
