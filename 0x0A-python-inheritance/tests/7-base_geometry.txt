@@ -12,6 +12,14 @@
 ...    print(1)
 1
 
+>>> if BaseGeometry.integer_validator.__doc__ is not None:
+...    print(1)
+1
+
+>>> if BaseGeometry.area.__doc__ is not None:
+...    print(1)
+1
+
 #######################
 # Correct usage tests #
 #######################
@@ -28,6 +36,15 @@ True
 ... except Exception as e:
 ...     print(e)
 area() is not implemented
+
+>>> try:
+...	bg.area(3, 5)
+... except Exception as e:
+...     print(e)
+area() takes 1 positional argument but 3 were given
+
+>>> type(BaseGeometry.__dict__['integer_validator'])
+<class 'function'>
 
 #######################
 # General Usage tests #
