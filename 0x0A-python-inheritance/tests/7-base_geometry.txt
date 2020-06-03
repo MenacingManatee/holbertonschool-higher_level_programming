@@ -13,10 +13,25 @@
 1
 
 #######################
-# General Usage tests #
+# Correct usage tests #
 #######################
 
 >>> bg = BaseGeometry()
+>>> type(bg) == BaseGeometry
+True
+
+>>> type(BaseGeometry.__dict__['area'])
+<class 'function'>
+
+>>> try:
+...	bg.area()
+... except Exception as e:
+...     print(e)
+area() is not implemented
+
+#######################
+# General Usage tests #
+#######################
 
 >>> bg.integer_validator("int", 102)
 
@@ -75,3 +90,4 @@ integer_validator() missing 2 required positional arguments: 'name' and 'value'
 ... except Exception as e:
 ... 	print(e)
 None must be an integer
+
