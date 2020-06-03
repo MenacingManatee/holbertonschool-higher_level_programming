@@ -4,6 +4,7 @@
 
 
 def read_lines(filename="", nb_lines=0):
+    '''Usage: read_lines(filename="", nb_lines=0)'''
     with open(filename) as f:
         if nb_lines <= 0:
             print(f.read(), end="")
@@ -13,3 +14,4 @@ def read_lines(filename="", nb_lines=0):
                 if e == "":
                     break
                 print(e, end="")
+    f.close()
