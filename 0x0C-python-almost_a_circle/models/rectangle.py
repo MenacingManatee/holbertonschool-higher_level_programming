@@ -73,10 +73,19 @@ class Rectangle(Base):
     def strrep(self):
         '''Creates a string representation for returning or printing'''
         res = []
-        for i in range(self.__height):
-            res.append(str("#" * self.__width + '\n'))
+        res.append('\n' * self.__y)
+        res.append(str(' ' * self.__x + "#" * self.__width + '\n') *
+                   self.__height)
         return "".join(res)
 
     def display(self):
         '''Prints in stdout the Rectangle instance with the character #'''
         print(self.strrep(), end="")
+
+    def __str__(self):
+        '''overrides the __str__ method so that it returns:
+        [Rectangle] (<id>) <x>/<y> - <width>/<height>'''
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.__x, self.__y,
+                                                       self.__width,
+                                                       self.__height)
