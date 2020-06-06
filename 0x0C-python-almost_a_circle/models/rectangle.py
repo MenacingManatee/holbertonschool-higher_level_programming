@@ -65,3 +65,18 @@ class Rectangle(Base):
             raise ValueError('{} must be > 0'.format(name))
         if name in ("x", "y") and value < 0:
             raise ValueError('{} must be >= 0'.format(name))
+
+    def area(self):
+        '''Finds the area of a rectangle'''
+        return self.__width * self.__height
+
+    def strrep(self):
+        '''Creates a string representation for returning or printing'''
+        res = []
+        for i in range(self.__height):
+            res.append(str("#" * self.__width + '\n'))
+        return "".join(res)
+
+    def display(self):
+        '''Prints in stdout the Rectangle instance with the character #'''
+        print(self.strrep(), end="")
