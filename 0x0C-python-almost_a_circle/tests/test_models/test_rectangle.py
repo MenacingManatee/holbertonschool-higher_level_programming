@@ -78,3 +78,29 @@ class test_rectangle_3(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             Rectangle(1, 1, -1, 0, 0)
         self.assertEqual('x must be >= 0', str(e.exception))
+
+class test_rectangle_4(unittest.TestCase):
+    '''Tests the area() public method added in task 4'''
+    def test_area_1(self):
+        '''Tests the area of a small rectangle'''
+        r1 = Rectangle(3, 6, 0, 0, 0)
+        self.assertEqual(r1.area(), 18)
+        r1.height = 10
+        self.assertEqual(r1.area(), 30)
+
+    def test_area_2(self):
+        '''Tests the area of a large rectangle'''
+        r1 = Rectangle(9223372036854775807, 9223372036854775807, 0, 0, 0)
+        self.assertEqual(r1.area(), 9223372036854775807 ** 2)
+
+class test_rectangle_6(unittest.TestCase):
+    '''Tests the __str__ dunder method overridden in task 6'''
+    def test_str(self):
+        '''Tests the __str__ method'''
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(r1.__str__(), "[Rectangle] (12) 2/1 - 4/6")
+
+    def test_str_2(self):
+        '''Tests the __str__ method'''
+        r1 = Rectangle(5, 5, 1, 0, 0)
+        self.assertEqual(r1.__str__(), "[Rectangle] (0) 1/0 - 5/5")
