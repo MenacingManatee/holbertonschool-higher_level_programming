@@ -104,3 +104,26 @@ class test_rectangle_6(unittest.TestCase):
         '''Tests the __str__ method'''
         r1 = Rectangle(5, 5, 1, 0, 0)
         self.assertEqual(r1.__str__(), "[Rectangle] (0) 1/0 - 5/5")
+
+class test_rectangle_8(unittest.TestCase):
+    '''Tests the update() method, ensuring values are correctly updated and
+    sent to the propper setter functions'''
+    def test_update(self):
+        '''Basic test for update method'''
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        self.assertEqual("[Rectangle] (10) 10/10 - 10/10", r1.__str__())
+        r1.update(1)
+        self.assertTrue(r1.id == 1)
+        r1.update(1, 2, 3, 4, 5)
+        self.assertEqual("[Rectangle] (1) 4/5 - 2/3", r1.__str__())
+
+    def test_update_fail(self):
+        '''Tests an update that should fail'''
+        r1 = Rectangle(1, 1, 1, 1, 1)
+        with self.assertRaises(ValueError) as e:
+            r1.update(1, 0)
+
+    def test_update_none(self):
+        '''Tests the update method if no arguments are sent'''
+        r1 = Rectangle(1, 1, 1, 1, 1)
+        r1.update()
