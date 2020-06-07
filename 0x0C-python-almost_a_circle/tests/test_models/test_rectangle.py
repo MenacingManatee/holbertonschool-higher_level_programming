@@ -127,3 +127,25 @@ class test_rectangle_8(unittest.TestCase):
         '''Tests the update method if no arguments are sent'''
         r1 = Rectangle(1, 1, 1, 1, 1)
         r1.update()
+
+class test_rectangle_9(unittest.TestCase):
+    '''Tests for the kwargs added to update method in task 9'''
+    def test_kwargs(self):
+        '''Basic test to ensure kwargs functionality'''
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        self.assertTrue(r1.x == 10)
+        r1.update(x=2)
+        self.assertTrue(r1.x == 2)
+
+    def test_all_kwargs(self):
+        '''Tests all kwargs in update'''
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(id=1, width=2, height=3, x=4, y=5)
+        self.assertEqual(r1.__str__(), "[Rectangle] (1) 4/5 - 2/3")
+
+    def test_args_kwargs(self):
+        '''Tests kwargs in update when args also sent'''
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(1, x=2)
+        self.assertTrue(r1.id == 1)
+        self.assertTrue(r1.x == 10)
