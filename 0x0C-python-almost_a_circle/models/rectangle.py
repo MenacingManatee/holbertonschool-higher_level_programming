@@ -115,3 +115,13 @@ class Rectangle(Base):
             self.x = args[3]
         if len(args) > 4:
             self.y = args[4]
+
+    def to_dictionary(self):
+        '''returns the dictionary representation of a Rectangle'''
+        res = {}
+        res.update({"id": self.id})
+        res.update({"width": self.width})
+        res.update({"height": self.height})
+        res.update({"x": self.x})
+        res.update({"y": self.y})
+        return res
