@@ -79,6 +79,7 @@ class test_rectangle_3(unittest.TestCase):
             Rectangle(1, 1, -1, 0, 0)
         self.assertEqual('x must be >= 0', str(e.exception))
 
+
 class test_rectangle_4(unittest.TestCase):
     '''Tests the area() public method added in task 4'''
     def test_area_1(self):
@@ -93,6 +94,7 @@ class test_rectangle_4(unittest.TestCase):
         r1 = Rectangle(9223372036854775807, 9223372036854775807, 0, 0, 0)
         self.assertEqual(r1.area(), 9223372036854775807 ** 2)
 
+
 class test_rectangle_6(unittest.TestCase):
     '''Tests the __str__ dunder method overridden in task 6'''
     def test_str(self):
@@ -104,6 +106,7 @@ class test_rectangle_6(unittest.TestCase):
         '''Tests the __str__ method'''
         r1 = Rectangle(5, 5, 1, 0, 0)
         self.assertEqual(r1.__str__(), "[Rectangle] (0) 1/0 - 5/5")
+
 
 class test_rectangle_8(unittest.TestCase):
     '''Tests the update() method, ensuring values are correctly updated and
@@ -127,6 +130,7 @@ class test_rectangle_8(unittest.TestCase):
         '''Tests the update method if no arguments are sent'''
         r1 = Rectangle(1, 1, 1, 1, 1)
         r1.update()
+
 
 class test_rectangle_9(unittest.TestCase):
     '''Tests for the kwargs added to update method in task 9'''

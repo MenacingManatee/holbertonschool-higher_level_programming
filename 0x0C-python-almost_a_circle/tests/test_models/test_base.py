@@ -28,4 +28,5 @@ class test_Base_1(unittest.TestCase):
         b2 = Base(12)
         b3 = Base(89)
         b4 = Base(None)
-        self.assertTrue(b1.id == 4 and b2.id == 12 and b3.id == 89 and b4.id == 5)
+        self.assertTrue(b1.id == 4 and b2.id == 12 and b3.id == 89 and
+                        b4.id == 5)

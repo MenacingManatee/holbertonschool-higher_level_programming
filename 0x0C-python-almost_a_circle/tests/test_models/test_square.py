@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''Defines multiple tests and test cases for the square class'''
 import models.square as s
-Square = s.Square
 import unittest
+Square = s.Square
 
 
 class test_square_10(unittest.TestCase):
@@ -19,6 +19,7 @@ class test_square_10(unittest.TestCase):
         '''Tests for documentation in init and str'''
         self.assertTrue(Square.__init__.__doc__ is not None and
                         Square.__str__.__doc__ is not None)
+
 
 class test_square_11(unittest.TestCase):
     '''Tests for the size getter and setter'''
@@ -50,6 +51,7 @@ class test_square_11(unittest.TestCase):
             s1.size = (float("NaN"))
         with self.assertRaises(TypeError) as e:
             s1.size = (float("inf"))
+
 
 class test_square_12(unittest.TestCase):
     '''Tests the update method added in task 12'''
