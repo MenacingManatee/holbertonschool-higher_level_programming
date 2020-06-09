@@ -81,3 +81,41 @@ class Base:
                 return res
         except OSError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''Serializes an object inherited from Base in CSV'''
+        if cls.__name__ == "Rectangle":
+            ordr = ["id", "width", "height", "x", "y"]
+        else:
+            ordr = ["id", "size", "x", "y"]
+        with open(str(cls.__name__) + '.json', "w") as csvf:
+            import csv
+            w = csv.DictWriter(csvf, fieldnames=ordr)
+            for item in list_objs:
+                w.writerow(item.to_dictionary())
+            csvf.close()
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''Deserializes an objest inherited from Base in CSV'''
+        if cls.__name__ == "Rectangle":
+            ordr = ["id", "width", "height", "x", "y"]
+        else:
+            ordr = ["id", "size", "x", "y"]
+        with open(str(cls.__name__) + '.json', "r") as csvf:
+            import csv
+            r = csv.DictReader(csvf, fieldnames=ordr)
+            tmp = {}
+            tmp2 = []
+            for row in r:
+                tmp.update(row)
+                tmp2.append(tmp.copy())
+                tmp.clear()
+            tmp2 = [dict([key, int(value)] for key, value in dicts.items())
+                   for dicts in tmp2]
+            res = []
+            for item in tmp2:
+                res.append(cls.create(**item))
+            csvf.close()
+            return res
