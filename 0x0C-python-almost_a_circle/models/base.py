@@ -113,7 +113,7 @@ class Base:
                 tmp2.append(tmp.copy())
                 tmp.clear()
             tmp2 = [dict([key, int(value)] for key, value in dicts.items())
-                   for dicts in tmp2]
+                    for dicts in tmp2]
             res = []
             for item in tmp2:
                 res.append(cls.create(**item))
