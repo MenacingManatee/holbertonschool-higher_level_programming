@@ -67,3 +67,17 @@ class Base:
             res = Rectangle(1, 1)
         res.update(**dictionary)
         return res
+
+    @classmethod
+    def load_from_file(cls):
+        '''returns a list of instances'''
+        try:
+            with open(str(cls.__name__) + '.json', "r") as f:
+                import json
+                tmp = json.loads(f.read())
+                res = []
+                for item in tmp:
+                    res.append(cls.create(**item))
+                return res
+        except OSError:
+            return []
