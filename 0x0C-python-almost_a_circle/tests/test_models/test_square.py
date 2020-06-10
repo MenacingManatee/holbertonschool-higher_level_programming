@@ -85,7 +85,7 @@ class test_square_12(unittest.TestCase):
         '''Tests when nothing is sent'''
         s1 = Square(5)
         s1.update()
-        self.assertEqual(s1.__str__(), "[Square] (20) 0/0 - 5")
+        self.assertEqual(s1.__str__(), "[Square] (21) 0/0 - 5")
 
 
 class test_square_14(unittest.TestCase):

@@ -29,9 +29,9 @@ class test_rectangle_2(unittest.TestCase):
         r1 = Rectangle(1, 1)
         r2 = Rectangle(1, 1)
         r3 = Rectangle(1, 1)
-        self.assertTrue(r1.id == 6)
-        self.assertTrue(r2.id == 7)
-        self.assertTrue(r3.id == 8)
+        self.assertTrue(r1.id == 7)
+        self.assertTrue(r2.id == 8)
+        self.assertTrue(r3.id == 9)
 
     def test_id_manual(self):
         '''Tests manual assignment of IDs'''

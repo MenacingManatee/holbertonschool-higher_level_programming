@@ -80,3 +80,48 @@ class test_Base_16(unittest.TestCase):
     def test_doc_16(self):
         '''Tests documentation for save_to_file() method'''
         self.assertTrue(Rectangle.save_to_file.__doc__ is not None)
+
+
+class test_Base_17(unittest.TestCase):
+    '''Test the from_json_string method added in task 17'''
+    def test_17_method_doc(self):
+        '''Tests the documentation for added method'''
+        self.assertTrue(Base.from_json_string.__doc__ is not None)
+
+    def test_basic_functionality_17(self):
+        '''Basic test for the method'''
+        inp = [{'id': 89, 'width': 10, 'height': 4}]
+        json_inp = Rectangle.to_json_string(inp)
+        list_out = Rectangle.from_json_string(json_inp)
+        self.assertTrue(type(list_out) is list)
+        self.assertTrue(type(list_out[0]) is dict)
+        self.assertTrue(list_out == inp)
+
+
+class test_Base_18(unittest.TestCase):
+    '''Test the create method added in task 18'''
+    def test_create_doc(self):
+        '''Tests the documentation of create() method'''
+        self.assertTrue(Base.create.__doc__ is not None)
+
+    def test_create_simple(self):
+        '''Simple functionality test'''
+        r1 = Rectangle(1, 1, 1, 1, 1)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertFalse(r1 == r2)
+        self.assertFalse(r1 is r2)
+        self.assertTrue(r1.__str__() == r2.__str__())
+
+
+class test_Base_19(unittest.TestCase):
+    '''tests the load_from_file() method added in task 19'''
+    def test_19_method_doc(self):
+        '''Tests the documentation of the method'''
+        self.assertTrue(Base.load_from_file.__doc__ is not None)
+
+
+class test_Base_20(unittest.TestCase):
+    '''Tests the save_to_file() method added in task 20'''
+    def test_20_method_doc(self):
+        self.assertTrue(Base.save_to_file_csv.__doc__ is not None)
