@@ -207,3 +207,23 @@ class test_rectangle_9(unittest.TestCase):
         r1.update(1, x=2)
         self.assertTrue(r1.id == 1)
         self.assertTrue(r1.x == 10)
+
+
+class test_rectangle_13(unittest.TestCase):
+    '''Tests fot the to_dictionary method added in task 13'''
+    def test_method_doc(self):
+        '''tests for the method documentation'''
+        self.assertTrue(Rectangle.to_dictionary.__doc__ is not None)
+
+    def test_simple(self):
+        '''tests for basic functionality'''
+        r1 = Rectangle(10, 2, 1, 9, 1)
+        self.assertEqual(r1.to_dictionary(),
+                         {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
+
+    def test_copy(self):
+        '''Tests for making a new rectangle based on the old dict'''
+        r1 = Rectangle(10, 2, 1, 9, 1)
+        r2 = Rectangle(1, 1, 1, 1, 1)
+        r2.update(**r1.to_dictionary())
+        self.assertEqual(r1.__str__(), r2.__str__())

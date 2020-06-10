@@ -86,3 +86,17 @@ class test_square_12(unittest.TestCase):
         s1 = Square(5)
         s1.update()
         self.assertEqual(s1.__str__(), "[Square] (20) 0/0 - 5")
+
+
+class test_square_14(unittest.TestCase):
+    '''Tests the to_dictionary() method added in task 14'''
+    def test_14_method_doc(self):
+        '''Tests the documentation for the method added'''
+        self.assertTrue(Square.to_dictionary.__doc__ is not None)
+
+    def test_different_rect(self):
+        '''Tests to make sure the dict has size, and not width or height'''
+        s1 = Square(1, 1, 1, 1)
+        d = s1.to_dictionary()
+        self.assertTrue('height' not in d and 'weight' not in d and
+                        'size' in d)
