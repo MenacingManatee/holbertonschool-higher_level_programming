@@ -32,6 +32,15 @@ class test_Base_1(unittest.TestCase):
         self.assertTrue(b1.id == 4 and b2.id == 12 and b3.id == 89 and
                         b4.id == 5)
 
+    def test_pep8(self):
+        '''Test for conformation to pep8'''
+        import pep8
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/base.py', 'models/rectangle.py',
+                                        'models/square.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
 
 class test_Base_15(unittest.TestCase):
     '''Tests for the dictionary to json string method defined in
