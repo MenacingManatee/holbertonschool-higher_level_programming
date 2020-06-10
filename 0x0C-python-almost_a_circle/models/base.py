@@ -27,19 +27,12 @@ class Base:
         '''writes the JSON string representation of list_objs to a file'''
         t = cls.__name__
         l = []
-        if len(list_objs) > 0 and list_objs is not None and list_objs[0] is not
-        None:
+        if (len(list_objs) > 0 and list_objs is not None and list_objs[0] is not
+            None):
             for item in list_objs:
                 l.append(item.to_dictionary())
-        res = "["
-        count = 0
         with open(t + '.json', "w") as f:
-            for item in l:
-                if count != 0:
-                    res = res + ', '
-                count += 1
-                res = res + Base.to_json_string(item)
-            res = res + ']'
+            res = cls.to_json_string(l)
             f.write(res)
             f.close()
 
