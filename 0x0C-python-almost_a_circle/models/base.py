@@ -63,7 +63,7 @@ class Base:
         try:
             with open(str(cls.__name__) + '.json', "r") as f:
                 import json
-                tmp = json.loads(f.read())
+                tmp = cls.from_json_string(f.read())
                 res = []
                 for item in tmp:
                     res.append(cls.create(**item))
