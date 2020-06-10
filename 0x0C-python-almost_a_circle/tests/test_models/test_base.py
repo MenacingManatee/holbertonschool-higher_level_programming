@@ -60,6 +60,10 @@ class test_Base_15(unittest.TestCase):
         except TypeError as e:
             self.assertTrue(e is not None)
 
+    def test_doc_15(self):
+        '''Tests documentation for to_json_string() method'''
+        self.assertTrue(Rectangle.to_json_string.__doc__ is not None)
+
 
 class test_Base_16(unittest.TestCase):
     '''tests for the class method def save_to_file(cls, list_objs):
@@ -72,3 +76,7 @@ class test_Base_16(unittest.TestCase):
             self.assertEqual(Rectangle.from_json_string(json),
                              [{"y": 1, "x": 1, "height": 1, "width": 1,
                                "id": 1}])
+
+    def test_doc_16(self):
+        '''Tests documentation for save_to_file() method'''
+        self.assertTrue(Rectangle.save_to_file.__doc__ is not None)

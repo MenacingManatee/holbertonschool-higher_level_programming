@@ -79,6 +79,10 @@ class test_rectangle_3(unittest.TestCase):
             Rectangle(1, 1, -1, 0, 0)
         self.assertEqual('x must be >= 0', str(e.exception))
 
+    def test_valid_doc(self):
+        '''Tests for documentation in the integer validator'''
+        self.assertTrue(Rectangle.integer_validator.__doc__ is not None)
+
 
 class test_rectangle_4(unittest.TestCase):
     '''Tests the area() public method added in task 4'''
@@ -94,6 +98,10 @@ class test_rectangle_4(unittest.TestCase):
         r1 = Rectangle(9223372036854775807, 9223372036854775807, 0, 0, 0)
         self.assertEqual(r1.area(), 9223372036854775807 ** 2)
 
+    def test_area_doc(self):
+        '''Tests documentation for area() method'''
+        self.assertTrue(Rectangle.area.__doc__ is not None)
+
 
 class test_rectangle_6(unittest.TestCase):
     '''Tests the __str__ dunder method overridden in task 6'''
@@ -106,6 +114,48 @@ class test_rectangle_6(unittest.TestCase):
         '''Tests the __str__ method'''
         r1 = Rectangle(5, 5, 1, 0, 0)
         self.assertEqual(r1.__str__(), "[Rectangle] (0) 1/0 - 5/5")
+
+    def test_str_doc(self):
+        '''Tests the __str__ documentaion'''
+        self.assertTrue(Rectangle.__str__.__doc__ is not None)
+
+
+class test_rectangle_7(unittest.TestCase):
+    '''Tests the display method added in task 7'''
+    def test_display_doc(self):
+        '''Tests the documentation of the display method'''
+        self.assertTrue(Rectangle.display.__doc__ is not None)
+
+    def test_display_simple(self):
+        '''Tests the display() method with a 1x1 rectangle'''
+        r1 = Rectangle(1, 1, 0, 0, 1)
+        import sys
+        from io import StringIO
+        from unittest.mock import patch
+        with patch('sys.stdout', new=StringIO()) as output:
+            r1.display()
+            self.assertEqual(output.getvalue().strip(), "#")
+
+    def test_display_larger(self):
+        '''tests the display() method with a larger rectangle'''
+        r1 = Rectangle(3, 2, 0, 0, 1)
+        import sys
+        from io import StringIO
+        from unittest.mock import patch
+        with patch('sys.stdout', new=StringIO()) as output:
+            r1.display()
+            self.assertEqual(output.getvalue().strip(), '###\n###')
+
+    def test_rectangle_position(self):
+        '''Tests the position in the display() method'''
+        r1 = Rectangle(2, 3, 2, 2, 1)
+        import sys
+        from io import StringIO
+        from unittest.mock import patch
+        with patch('sys.stdout', new=StringIO()) as output:
+            r1.display()
+            self.assertEqual(output.getvalue(),
+                             '\n\n  ##\n  ##\n  ##\n')
 
 
 class test_rectangle_8(unittest.TestCase):
@@ -130,6 +180,10 @@ class test_rectangle_8(unittest.TestCase):
         '''Tests the update method if no arguments are sent'''
         r1 = Rectangle(1, 1, 1, 1, 1)
         r1.update()
+
+    def test_update_doc(self):
+        '''Tests the documentation for update() method'''
+        self.assertTrue(Rectangle.update.__doc__ is not None)
 
 
 class test_rectangle_9(unittest.TestCase):

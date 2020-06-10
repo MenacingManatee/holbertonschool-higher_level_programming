@@ -23,6 +23,10 @@ class test_square_10(unittest.TestCase):
 
 class test_square_11(unittest.TestCase):
     '''Tests for the size getter and setter'''
+    def test_size_doc(self):
+        '''Tests for documentation in the size getter and setter'''
+        self.assertTrue(Square.size.__doc__ is not None)
+
     def test_size_good(self):
         '''Tests for a good size being sent to square'''
         s1 = Square(5)
@@ -55,6 +59,10 @@ class test_square_11(unittest.TestCase):
 
 class test_square_12(unittest.TestCase):
     '''Tests the update method added in task 12'''
+    def test_update_doc(self):
+        '''Tests the documentation of the update method'''
+        self.assertTrue(Square.update.__doc__ is not None)
+
     def test_functionality_args(self):
         '''Tests the basic functionality using args'''
         s1 = Square(5)
