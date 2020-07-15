@@ -1,5 +1,5 @@
 -- lists all genres
--- of the show Dexter
+-- not in the show Dexter
 SELECT tv_genres.name
 FROM tv_genres
 LEFT JOIN tv_show_genres
