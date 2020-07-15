@@ -4,6 +4,10 @@ SELECT state_id, name
 FROM (
 SELECT cities.state_id, cities.name
 FROM cities
+WHERE state_id=(
+SELECT states.id
+FROM states
+WHERE name="CALIFORNIA")
 UNION ALL
 SELECT states.id, states.name
 FROM states
