@@ -3,29 +3,32 @@
 in ascending order by state id'''
 
 
-import sqlalchemy
-import MySQLdb
-from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from sys import argv
-engine = create_engine('mysql+mysqldb://'+argv[1]+':'+argv[2]+'\
+if __name__ == "__main__":
+    import sqlalchemy
+    import MySQLdb
+    from sqlalchemy import create_engine
+    from sqlalchemy import Column, Integer, String
+    from sqlalchemy.orm import sessionmaker
+    from sqlalchemy.ext.declarative import declarative_base
+    from sys import argv
+    engine = create_engine('mysql+mysqldb://'+argv[1]+':'+argv[2]+'\
 @localhost:3306/'+argv[3])
-conc = engine.connect()
-Session = sessionmaker(bind=engine)
-session = Session()
-Base = declarative_base()
+    conc = engine.connect()
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    Base = declarative_base()
 
 
-class states(Base):
-    '''Table defining states'''
-    __tablename__ = 'states'
+    class states(Base):
+        '''Table defining states'''
+        __tablename__ = 'states'
 
-    id = Column(Integer, autoincrement=True, primary_key=True)
-    name = Column(String(256))
+        id = Column(Integer, autoincrement=True, primary_key=True)
+        name = Column(String(256))
 
 
-for id, name in session.query(states.id, states.name).order_by(states.id):
-    if name == argv[4]:
+    for id, name in session.query(states.id, states.name).\
+                                                         filter(states.name == \
+                                                         "{}".format(argv[4])).\
+                                                         order_by(states.id):
         print("({}, '{}')".format(id, name))
