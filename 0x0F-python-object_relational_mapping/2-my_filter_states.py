@@ -18,7 +18,6 @@ if __name__ == "__main__":
     session = Session()
     Base = declarative_base()
 
-
     class states(Base):
         '''Table defining states'''
         __tablename__ = 'states'
@@ -26,9 +25,8 @@ if __name__ == "__main__":
         id = Column(Integer, autoincrement=True, primary_key=True)
         name = Column(String(256))
 
-
     for id, name in session.query(states.id, states.name).\
-                                                         filter(states.name == \
-                                                         "{}".format(argv[4])).\
-                                                         order_by(states.id):
+        filter(states.name ==
+               "{}".format(argv[4])).\
+            order_by(states.id):
         print("({}, '{}')".format(id, name))

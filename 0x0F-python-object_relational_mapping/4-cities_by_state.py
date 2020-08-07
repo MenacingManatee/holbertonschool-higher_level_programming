@@ -35,5 +35,5 @@ if __name__ == "__main__":
 
     for c, s in session.query(cities, states).\
         filter(cities.state_id == states.id).\
-        order_by(cities.id):
+            order_by(cities.id):
         print("({}, '{}', '{}')".format(c.id, c.name, s.name))

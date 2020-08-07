@@ -39,8 +39,8 @@ if __name__ == "__main__":
 
     res = []
     for c, s in session.query(cities, states).\
-        filter(cities.state_id == states.id, states.name == "{}".format(cmds)).\
-        order_by(cities.id):
+        filter(cities.state_id == states.id, states.name == "{}".format(cmds)
+               ).order_by(cities.id):
         res.append(c.name)
 
     print(", ".join(res))
