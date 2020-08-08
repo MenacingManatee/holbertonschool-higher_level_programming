@@ -1,39 +1,23 @@
 #!/usr/bin/python3
-'''lists all cities from the database hbtn_0e_4_usa,
-in ascending order by city id'''
+'''lists all states from the database hbtn_0e_0_usa'''
 
 
 if __name__ == "__main__":
-    import sqlalchemy
     import MySQLdb
-    from sqlalchemy import create_engine
-    from sqlalchemy import Column, Integer, String, ForeignKey
-    from sqlalchemy.orm import sessionmaker
-    from sqlalchemy.ext.declarative import declarative_base
     from sys import argv
-    engine = create_engine('mysql+mysqldb://'+argv[1]+':'+argv[2]+'\
-@localhost:3306/'+argv[3])
-    conc = engine.connect()
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    Base = declarative_base()
+    conc = MySQLdb.connect("localhost", argv[1], argv[2], argv[3])
 
-    class states(Base):
-        '''Table defining states'''
-        __tablename__ = 'states'
+    curs = conc.cursor()
 
-        id = Column(Integer, autoincrement=True, primary_key=True)
-        name = Column(String(256))
+    curs.execute("SELECT states.id, cities.name, states.name\
+ FROM states\
+ LEFT JOIN cities\
+ ON cities.state_id=states.id\
+ ORDER BY states.id")
+    data = curs.fetchall()
 
-    class cities(Base):
-        '''Table defining cities'''
-        __tablename__ = 'cities'
+    for item in data:
+        print(item)
 
-        id = Column(Integer, autoincrement=True, primary_key=True)
-        state_id = Column(Integer)
-        name = Column(String(256))
-
-    for c, s in session.query(cities, states).\
-        filter(cities.state_id == states.id).\
-            order_by(cities.id):
-        print("({}, '{}', '{}')".format(c.id, c.name, s.name))
+    curs.close()
+    conc.close()
