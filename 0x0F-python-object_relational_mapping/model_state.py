@@ -18,10 +18,10 @@ Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
 
+
 class State(Base):
     '''Table defining states'''
     __tablename__ = 'states'
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String(128), nullable=False)
-
