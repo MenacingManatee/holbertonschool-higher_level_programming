@@ -5,9 +5,8 @@ in ascending order by state id'''
 
 if __name__ == "__main__":
     import sqlalchemy
-    import MySQLdb
+    from model_state import Base, State
     from sqlalchemy import create_engine
-    from sqlalchemy import Column, Integer, String
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy.ext.declarative import declarative_base
     from sys import argv
@@ -16,15 +15,7 @@ if __name__ == "__main__":
     conc = engine.connect()
     Session = sessionmaker(bind=engine)
     session = Session()
-    Base = declarative_base()
 
-    class states(Base):
-        '''Table defining states'''
-        __tablename__ = 'states'
-
-        id = Column(Integer, autoincrement=True, primary_key=True)
-        name = Column(String(256))
-
-    for id, name in session.query(states.id, states.name).order_by(
-            states.id):
+    for id, name in session.query(State.id, State.name).order_by(
+            State.id):
         print("{}: {}".format(id, name))
