@@ -16,9 +16,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     count = 0
+    res = ""
 
     for id, name in session.query(State.id, State.name).order_by(
             State.id):
         if count == 0:
-            print("{}: {}".format(id, name))
+            res = "{}: {}".format(id, name)
             count += 1
+    if res == ": ":
+        print("Nothing")
+    else:
+        print(res)
