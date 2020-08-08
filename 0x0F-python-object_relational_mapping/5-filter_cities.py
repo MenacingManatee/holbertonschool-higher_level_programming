@@ -1,46 +1,28 @@
 #!/usr/bin/python3
-'''lists all cities in state from the database hbtn_0e_4_usa,
-in ascending order by city id'''
+'''lists all states from the database hbtn_0e_0_usa'''
 
 
 if __name__ == "__main__":
-    import sqlalchemy
     import MySQLdb
-    from sqlalchemy import create_engine
-    from sqlalchemy import Column, Integer, String, ForeignKey
-    from sqlalchemy.orm import sessionmaker
-    from sqlalchemy.ext.declarative import declarative_base
     from sys import argv
-    engine = create_engine('mysql+mysqldb://'+argv[1]+':'+argv[2]+'\
-@localhost:3306/'+argv[3])
-    conc = engine.connect()
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    Base = declarative_base()
-    cmds = ""
-    if argv[4] is not None:
-        cmds = argv[4].split(';')
-        cmds = argv[4].strip("'")
+    conc = MySQLdb.connect("localhost", argv[1], argv[2], argv[3])
 
-    class states(Base):
-        '''Table defining states'''
-        __tablename__ = 'states'
+    curs = conc.cursor()
+    cmd = argv[4].split(';')
+    state = cmd[0].strip("'")
 
-        id = Column(Integer, autoincrement=True, primary_key=True)
-        name = Column(String(256))
-
-    class cities(Base):
-        '''Table defining cities'''
-        __tablename__ = 'cities'
-
-        id = Column(Integer, autoincrement=True, primary_key=True)
-        state_id = Column(Integer)
-        name = Column(String(256))
+    curs.execute("SELECT cities.name\
+ FROM cities\
+ LEFT JOIN states\
+ ON states.id=cities.state_id\
+ WHERE states.name='{}'\
+    ORDER BY cities.id".format(state))
+    data = curs.fetchall()
 
     res = []
-    for c, s in session.query(cities, states).\
-        filter(cities.state_id == states.id, states.name == "{}".format(cmds)
-               ).order_by(cities.id):
-        res.append(c.name)
+    for item in data:
+        res.append(item[0])
 
     print(", ".join(res))
+    curs.close()
+    conc.close()
