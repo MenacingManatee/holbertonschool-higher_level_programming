@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     curs = conc.cursor()
 
-    curs.execute("SELECT * FROM states;")
+    curs.execute("SELECT * FROM states ORDER BY id;")
     data = curs.fetchall()
 
     for item in data:
