@@ -9,7 +9,6 @@ if __name__ == "__main__":
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy.ext.declarative import declarative_base
-    from sqlalchemy.orm.exc import NoResultFound
     from sys import argv
     engine = create_engine('mysql+mysqldb://'+argv[1]+':'+argv[2] +
                            '@localhost:3306/'+argv[3])
@@ -19,12 +18,12 @@ if __name__ == "__main__":
     count = 0
     res = ""
 
-    for id, name in session.query(State.id, State.name).order_by(
-            State.id):
-        if count == 0:
-            res = "{}: {}".format(id, name)
-            count += 1
-    if res != "":
+    try:
+        for id, name in session.query(State.id, State.name).order_by(
+                State.id).first():
+            if count == 0:
+                res = "{}: {}".format(id, name)
+                count += 1
         print(res)
-    else:
+    except TypeError:
         print("Nothing")
