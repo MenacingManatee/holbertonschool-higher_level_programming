@@ -21,8 +21,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    unf_res = session.query(State).join(City, City.state_id == State.id).\
-              order_by(State.id, City.id).all()
+    unf_res = session.query(State)
 
     tmp = None
     for state in unf_res:
