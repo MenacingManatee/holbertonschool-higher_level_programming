@@ -25,4 +25,6 @@ if __name__ == "__main__":
     session.add(newstate)
     session.commit()
 
+    print(newstate.id)
+
     session.close()
