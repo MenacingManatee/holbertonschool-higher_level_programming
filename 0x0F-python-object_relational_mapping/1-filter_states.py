@@ -9,7 +9,8 @@ if __name__ == "__main__":
 
     curs = conc.cursor()
 
-    curs.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id;")
+    curs.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id\
+;")
     data = curs.fetchall()
 
     for item in data:
