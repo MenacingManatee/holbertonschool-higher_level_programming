@@ -21,12 +21,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    unf_res = session.query(City).join(State, State.id == City.state_id).\
+    unf_res = session.query(State).join(City, City.state_id == State.id).\
               order_by(State.id, City.id).all()
 
     tmp = None
-    for city in unf_res:
-        if tmp != city.state:
-            print("{}: {}".format(city.state.id, city.state.name))
-            tmp = city.state
-        print("\t{}: {}".format(city.id, city.name))
+    for state in unf_res:
+        if tmp != state:
+            print("{}: {}".format(state.id, state.name))
+            tmp = state
+        for city in state.cities:
+            print("\t{}: {}".format(city.id, city.name))
+    session.close()
