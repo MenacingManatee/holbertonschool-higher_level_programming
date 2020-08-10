@@ -28,7 +28,6 @@ if __name__ == "__main__":
     for i in unf_res:
         if i not in fil_res:
             fil_res.append(i)
-    print(fil_res)
     tmp = ""
     for tup in fil_res:
         if tmp != tup[1]:
