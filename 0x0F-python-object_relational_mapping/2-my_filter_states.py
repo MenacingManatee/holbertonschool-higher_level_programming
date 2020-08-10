@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     curs = conc.cursor()
 
-    curs.execute("SELECT * FROM states WHERE name='{}'\
+    curs.execute("SELECT * FROM states WHERE BINARY name='{}'\
 ORDER BY states.id;".format(argv[4]))
     data = curs.fetchall()
 
