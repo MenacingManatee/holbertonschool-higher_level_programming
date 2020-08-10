@@ -19,11 +19,9 @@ if __name__ == "__main__":
     res = ""
 
     try:
-        for id, name in session.query(State.id, State.name).order_by(
-                State.id).first():
-            if count == 0:
-                res = "{}: {}".format(id, name)
-                count += 1
+        row = session.query(State.id, State.name).order_by(
+            State.id).first()
+        res = "{}: {}".format(row[0], row[1])
         print(res)
     except TypeError:
         print("Nothing")
