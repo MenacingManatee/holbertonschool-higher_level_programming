@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     curs.execute("SELECT cities.id, cities.name, states.name\
  FROM states\
- LEFT JOIN cities\
+ INNER JOIN cities\
  ON cities.state_id=states.id\
  ORDER BY cities.id")
     data = curs.fetchall()
