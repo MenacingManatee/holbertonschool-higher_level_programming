@@ -22,12 +22,11 @@ if __name__ == "__main__":
     session = Session()
 
     newstate = State(name="California")
-    s_id = session.query(State.id).filter(
-        State.name == "California").first()
-    newcity = City(name="San Francisco", state_id=s_id)
 
     session.add(newstate)
-    session.add(newcity)
     session.commit()
 
+    newcity = City(name="San Francisco", state_id=newstate.id)
+    session.add(newcity)
+    session.commit()
     session.close()

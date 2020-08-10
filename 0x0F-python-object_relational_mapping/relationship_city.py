@@ -3,16 +3,8 @@
 in ascending order by state id'''
 
 
-import sqlalchemy
-import MySQLdb
-from model_state import *
-from sqlalchemy import MetaData
-from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import sessionmaker
-from relationship_state import Base, State, session, conc
-
-from sys import argv
+from relationship_state import Base, State
 
 class City(Base):
     '''Table defining cities'''
