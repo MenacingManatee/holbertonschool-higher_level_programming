@@ -2,9 +2,9 @@
 '''fetches https://intranet.hbtn.io/status using urllib'''
 
 
-import urllib.request
+from urllib import request
 import sys
 
-with urllib.request.urlopen(sys.argv[1]) as u:
+with request.urlopen(sys.argv[1]) as u:
     print(u.getheader('X-Request-Id'))
     u.close()
