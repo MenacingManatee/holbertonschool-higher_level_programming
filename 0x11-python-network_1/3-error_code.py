@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''takes in a URL, sends a request to the URL and displays the body 
+'''takes in a URL, sends a request to the URL and displays the body \
 of the response'''
 
 
@@ -10,5 +10,6 @@ if __name__ == "__main__":
     try:
         with request.urlopen(argv[1]) as u:
             print(u.read().decode('utf8'))
+            u.close()
     except error.HTTPError as e:
         print("Error Code:", e.getcode())
