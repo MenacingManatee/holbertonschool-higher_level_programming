@@ -10,7 +10,7 @@ if __name__ == "__main__":
     if len(argv) < 2:
         js = ""
     else:
-        js = "".join(argv[1:])
+        js = argv[1]
     url = 'http://0.0.0.0:5000/search_user'
     req = requests.post(url, data={"q": js})
     try:
