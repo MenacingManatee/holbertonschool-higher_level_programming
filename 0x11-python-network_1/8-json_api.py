@@ -18,7 +18,7 @@ if __name__ == "__main__":
     except Exception:
         print("Not a valid JSON")
         exit
-    if js2 == {}:
+    if js2 == {} or js2 is None:
         print("No result")
     else:
         print("[{}] {}".format(js2.get('id'), js2.get('name')))
