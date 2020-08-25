@@ -11,6 +11,5 @@ if __name__ == "__main__":
                    argv[1], '/commits'])
     req = requests.get(url)
     for item in req.json():
-#        print(item, '\n\n\n')
         print(item.get('sha'), item.get('commit').get('author').
               get('name'))
