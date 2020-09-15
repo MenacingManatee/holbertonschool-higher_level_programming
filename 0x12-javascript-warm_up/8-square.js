@@ -10,7 +10,7 @@ if (num1 !== num2) {
   let str = '';
   for (i = 0; i < num1; i++) {
     for (j = 0; j < num1; j++) {
-      str = str + '#';
+      str = str + 'X';
     }
     console.log(str);
     str = '';
