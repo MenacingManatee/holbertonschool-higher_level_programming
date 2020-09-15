@@ -3,7 +3,7 @@
 const num1 = Math.trunc(Number(process.argv[2]));
 const num2 = num1;
 if (num1 !== num2) {
-    console.log('Missing size');
+  console.log('Missing size');
 } else {
   let i;
   let j;
@@ -12,7 +12,7 @@ if (num1 !== num2) {
     for (j = 0; j < num1; j++) {
       str = str + '#';
     }
-    console.log(str)
-    str = ''
+    console.log(str);
+    str = '';
   }
 }
