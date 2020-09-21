@@ -2,7 +2,6 @@
 
 const dict = require('./101-data').dict;
 const resDict = {};
-console.log(dict);
 for (const [key, val] of Object.entries(dict)) {
   let tmp;
   if (resDict[val] !== undefined) {
